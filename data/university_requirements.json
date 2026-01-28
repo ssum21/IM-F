@@ -1,0 +1,388 @@
+{
+    "description": "주요 대학 계열별 권장 이수 과목",
+    "universities": {
+        "서울대학교": {
+            "자연과학": {
+                "required": [
+                    "미적분II",
+                    "확률과 통계",
+                    "기하"
+                ],
+                "recommended": [
+                    "물리학II",
+                    "화학II",
+                    "생명과학II",
+                    "지구과학II"
+                ],
+                "preferred_activities": [
+                    "과학탐구반",
+                    "수학동아리",
+                    "과학올림피아드"
+                ]
+            },
+            "공학": {
+                "required": [
+                    "미적분II",
+                    "기하",
+                    "물리학II"
+                ],
+                "recommended": [
+                    "프로그래밍",
+                    "인공지능 기초",
+                    "화학II"
+                ],
+                "preferred_activities": [
+                    "로봇공학반",
+                    "코딩동아리",
+                    "발명반"
+                ]
+            },
+            "의예": {
+                "required": [
+                    "미적분II",
+                    "화학II",
+                    "생명과학II"
+                ],
+                "recommended": [
+                    "물리학II",
+                    "확률과 통계"
+                ],
+                "preferred_activities": [
+                    "의학탐구반",
+                    "생명과학동아리",
+                    "봉사활동"
+                ]
+            },
+            "인문": {
+                "required": [
+                    "문학",
+                    "화법과 작문",
+                    "영어II"
+                ],
+                "recommended": [
+                    "세계사",
+                    "동아시아 역사 기행",
+                    "정치"
+                ],
+                "preferred_activities": [
+                    "토론반",
+                    "독서동아리",
+                    "신문반"
+                ]
+            },
+            "사회과학": {
+                "required": [
+                    "경제",
+                    "사회문화 탐구",
+                    "확률과 통계"
+                ],
+                "recommended": [
+                    "정치",
+                    "법과 사회",
+                    "세계시민과 지리"
+                ],
+                "preferred_activities": [
+                    "경제동아리",
+                    "시사토론반",
+                    "모의UN"
+                ]
+            },
+            "경영": {
+                "required": [
+                    "경제",
+                    "확률과 통계",
+                    "영어II"
+                ],
+                "recommended": [
+                    "금융과 경제생활",
+                    "데이터 과학",
+                    "영어독해와 작문"
+                ],
+                "preferred_activities": [
+                    "경영동아리",
+                    "창업반",
+                    "마케팅반"
+                ]
+            }
+        },
+        "연세대학교": {
+            "자연과학": {
+                "required": [
+                    "미적분II",
+                    "확률과 통계"
+                ],
+                "recommended": [
+                    "물리학II",
+                    "화학II",
+                    "생명과학II"
+                ],
+                "preferred_activities": [
+                    "과학탐구반",
+                    "연구활동"
+                ]
+            },
+            "공학": {
+                "required": [
+                    "미적분II",
+                    "물리학II"
+                ],
+                "recommended": [
+                    "기하",
+                    "프로그래밍",
+                    "인공지능 기초"
+                ],
+                "preferred_activities": [
+                    "공학탐구반",
+                    "코딩동아리"
+                ]
+            },
+            "의예": {
+                "required": [
+                    "화학II",
+                    "생명과학II"
+                ],
+                "recommended": [
+                    "미적분II",
+                    "물리학II"
+                ],
+                "preferred_activities": [
+                    "의학동아리",
+                    "봉사활동"
+                ]
+            },
+            "인문": {
+                "required": [
+                    "문학",
+                    "영어II"
+                ],
+                "recommended": [
+                    "세계사",
+                    "화법과 작문"
+                ],
+                "preferred_activities": [
+                    "인문학동아리",
+                    "독서토론반"
+                ]
+            },
+            "사회과학": {
+                "required": [
+                    "사회문화 탐구",
+                    "경제"
+                ],
+                "recommended": [
+                    "정치",
+                    "확률과 통계"
+                ],
+                "preferred_activities": [
+                    "사회탐구반",
+                    "시사토론반"
+                ]
+            },
+            "경영": {
+                "required": [
+                    "경제",
+                    "영어II"
+                ],
+                "recommended": [
+                    "확률과 통계",
+                    "금융과 경제생활"
+                ],
+                "preferred_activities": [
+                    "경영동아리",
+                    "창업반"
+                ]
+            }
+        },
+        "고려대학교": {
+            "자연과학": {
+                "required": [
+                    "미적분II",
+                    "확률과 통계"
+                ],
+                "recommended": [
+                    "물리학II",
+                    "화학II",
+                    "생명과학II"
+                ],
+                "preferred_activities": [
+                    "과학탐구반"
+                ]
+            },
+            "공학": {
+                "required": [
+                    "미적분II",
+                    "물리학II"
+                ],
+                "recommended": [
+                    "프로그래밍",
+                    "기하"
+                ],
+                "preferred_activities": [
+                    "공학동아리",
+                    "IT동아리"
+                ]
+            },
+            "의예": {
+                "required": [
+                    "생명과학II",
+                    "화학II"
+                ],
+                "recommended": [
+                    "미적분II",
+                    "물리학II"
+                ],
+                "preferred_activities": [
+                    "의학탐구반"
+                ]
+            },
+            "인문": {
+                "required": [
+                    "문학",
+                    "영어II"
+                ],
+                "recommended": [
+                    "세계사",
+                    "동아시아 역사 기행"
+                ],
+                "preferred_activities": [
+                    "인문학동아리"
+                ]
+            },
+            "사회과학": {
+                "required": [
+                    "경제",
+                    "사회문화 탐구"
+                ],
+                "recommended": [
+                    "정치",
+                    "법과 사회"
+                ],
+                "preferred_activities": [
+                    "사회과학탐구반"
+                ]
+            },
+            "경영": {
+                "required": [
+                    "경제",
+                    "확률과 통계"
+                ],
+                "recommended": [
+                    "영어II",
+                    "금융과 경제생활"
+                ],
+                "preferred_activities": [
+                    "경영동아리"
+                ]
+            }
+        },
+        "KAIST": {
+            "공학": {
+                "required": [
+                    "미적분II",
+                    "기하",
+                    "물리학II"
+                ],
+                "recommended": [
+                    "프로그래밍",
+                    "인공지능 기초",
+                    "화학II",
+                    "정보과학"
+                ],
+                "preferred_activities": [
+                    "과학올림피아드",
+                    "로봇공학반",
+                    "AI연구반"
+                ]
+            },
+            "자연과학": {
+                "required": [
+                    "미적분II",
+                    "물리학II",
+                    "화학II"
+                ],
+                "recommended": [
+                    "기하",
+                    "생명과학II",
+                    "데이터 과학"
+                ],
+                "preferred_activities": [
+                    "과학탐구반",
+                    "연구활동"
+                ]
+            }
+        },
+        "POSTECH": {
+            "공학": {
+                "required": [
+                    "미적분II",
+                    "물리학II"
+                ],
+                "recommended": [
+                    "기하",
+                    "화학II",
+                    "프로그래밍"
+                ],
+                "preferred_activities": [
+                    "과학올림피아드",
+                    "공학탐구반"
+                ]
+            },
+            "자연과학": {
+                "required": [
+                    "미적분II",
+                    "물리학II",
+                    "화학II"
+                ],
+                "recommended": [
+                    "기하",
+                    "생명과학II"
+                ],
+                "preferred_activities": [
+                    "과학탐구반"
+                ]
+            }
+        }
+    },
+    "career_to_major_mapping": {
+        "소프트웨어 개발자": [
+            "공학",
+            "자연과학"
+        ],
+        "의사": [
+            "의예"
+        ],
+        "변호사": [
+            "사회과학",
+            "인문"
+        ],
+        "경영자": [
+            "경영",
+            "사회과학"
+        ],
+        "연구원": [
+            "자연과학",
+            "공학"
+        ],
+        "교사": [
+            "인문",
+            "자연과학",
+            "사회과학"
+        ],
+        "기자": [
+            "인문",
+            "사회과학"
+        ],
+        "디자이너": [
+            "예술",
+            "공학"
+        ],
+        "금융인": [
+            "경영",
+            "사회과학"
+        ],
+        "공무원": [
+            "사회과학",
+            "인문"
+        ]
+    }
+}

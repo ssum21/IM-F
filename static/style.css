@@ -1,0 +1,1485 @@
+/* ============================================================
+   I'MF - 아이엠에프: F학점에서 Future로
+   Brutalist-Editorial Design System
+   고교학점제 맞춤 설계 AI Agent
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+/* ============================================================
+   CSS VARIABLES - Design Tokens
+   ============================================================ */
+:root {
+    /* 핵심 컬러 팔레트 */
+    --imf-void: #0a0a0c;
+    --imf-charcoal: #141416;
+    --imf-slate: #1c1c20;
+    --imf-graphite: #28282e;
+
+    /* 악센트 컬러 - F to Future 트랜지션 */
+    --imf-danger: #ff3b30;
+    --imf-gold: #d4af37;
+    --imf-gold-bright: #ffd700;
+    --imf-mint: #00d4aa;
+    --imf-mint-glow: #00ffcc;
+
+    /* 텍스트 */
+    --imf-white: #fafafa;
+    --imf-cream: #f0ebe3;
+    --imf-gray: #888888;
+    --imf-muted: #555555;
+
+    /* 그라데이션 */
+    --gradient-f-to-future: linear-gradient(135deg, var(--imf-danger) 0%, var(--imf-gold) 50%, var(--imf-mint) 100%);
+    --gradient-gold-shimmer: linear-gradient(90deg, var(--imf-gold), var(--imf-gold-bright), var(--imf-gold));
+    --gradient-depth: linear-gradient(180deg, var(--imf-charcoal) 0%, var(--imf-void) 100%);
+    --gradient-card-shine: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+
+    /* 타이포그래피 */
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'Noto Sans KR', sans-serif;
+
+    /* 그리드 & 스페이싱 */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 32px;
+    --space-xl: 64px;
+    --space-2xl: 128px;
+
+    /* 노이즈 텍스처 (SVG 인라인) */
+    --noise-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        border-color: rgba(212, 175, 55, 0.6);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes typing-cursor {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes scan-line {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes border-flow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+.stApp,
+/* Streamlit 내부 구조 변경 대비: 배경/글꼴을 더 안정적인 컨테이너에도 적용 */
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewContainer"]>.main,
+body {
+    /* 글로우는 오버레이(cover) 대신 배경 레이어로만 적용 */
+    background:
+        radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.10) 0%, rgba(212, 175, 55, 0.00) 55%),
+        radial-gradient(circle at 20% 90%, rgba(0, 212, 170, 0.06) 0%, rgba(0, 212, 170, 0.00) 60%),
+        var(--imf-void) !important;
+    color: var(--imf-cream) !important;
+    font-family: var(--font-body) !important;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 노이즈 오버레이 */
+.stApp::before {
+    /* 비활성화: 흰 화면/가림 문제 원인 후보 */
+    content: none !important;
+}
+
+/* 스캔 라인 효과 */
+.stApp::after {
+    /* 비활성화 */
+    content: none !important;
+}
+
+/* 글로우 앰비언트 배경 */
+.stApp>div:first-child::before {
+    /* 비활성화 (글로우는 .stApp background로 대체) */
+    content: none !important;
+}
+
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.stApp h1,
+.stApp h2,
+.stApp h3 {
+    font-family: var(--font-display) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    color: var(--imf-white) !important;
+    line-height: 1.1 !important;
+}
+
+/* ============================================================
+   HERO HEADER - 메인 타이틀
+   ============================================================ */
+.main-header {
+    font-family: var(--font-display) !important;
+    font-size: clamp(4rem, 12vw, 8rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.05em !important;
+    line-height: 0.9 !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: var(--space-xl) 0 var(--space-md) !important;
+    background: var(--gradient-f-to-future);
+    background-size: 200% auto;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1), gradient-shift 8s ease infinite;
+    position: relative;
+}
+
+.main-header::after {
+    content: 'I\'MF';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    -webkit-text-stroke: 1px rgba(212, 175, 55, 0.1);
+    -webkit-text-fill-color: transparent;
+    z-index: -1;
+}
+
+.sub-header {
+    font-family: var(--font-mono) !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    color: var(--imf-gray) !important;
+    text-align: left !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    margin-bottom: var(--space-2xl) !important;
+    padding-left: 2px;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+}
+
+.sub-header::before {
+    content: '// ';
+    color: var(--imf-gold);
+}
+
+/* ============================================================
+   SECTION HEADERS - 섹션 제목 (h3, h4)
+   ============================================================ */
+h3,
+.stMarkdown h3 {
+    color: #FFFFFF !important;
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    font-size: 1.15rem !important;
+    margin-top: var(--space-lg) !important;
+    margin-bottom: var(--space-md) !important;
+}
+
+h4,
+.stMarkdown h4 {
+    color: #FFFFFF !important;
+    font-family: var(--font-body) !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+}
+
+/* 마크다운 내 bold 텍스트 (섹션 소제목) */
+.stMarkdown strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* ============================================================
+   SIDEBAR - 프로그레스 네비게이션
+   ============================================================ */
+[data-testid="stSidebar"] {
+    background: var(--imf-charcoal) !important;
+    border-right: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+
+[data-testid="stSidebar"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.02) 0%, transparent 30%);
+    pointer-events: none;
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div {
+    color: var(--imf-cream) !important;
+}
+
+/* 사이드바 진행 단계 스타일 */
+[data-testid="stSidebar"] .stMarkdown p {
+    font-family: var(--font-body) !important;
+    font-size: 0.85rem !important;
+    padding: var(--space-sm) var(--space-md);
+    margin: var(--space-xs) 0 !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease;
+    border-left: 2px solid transparent;
+}
+
+[data-testid="stSidebar"] .stMarkdown p:hover {
+    background: rgba(212, 175, 55, 0.05);
+    border-left-color: var(--imf-gold);
+}
+
+/* 사이드바 안내 가이드 - 배경 제거 */
+[data-testid="stSidebar"] .sidebar-guide {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+[data-testid="stSidebar"] .sidebar-guide p {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 0 !important;
+    margin: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    font-size: 0.85rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+    border-left: none !important;
+}
+
+[data-testid="stSidebar"] .sidebar-guide p:last-child {
+    border-bottom: none !important;
+}
+
+[data-testid="stSidebar"] .sidebar-guide .step-num {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 22px !important;
+    width: 22px !important;
+    height: 22px !important;
+    background: rgba(212, 175, 55, 0.15) !important;
+    color: var(--imf-gold) !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    border-radius: 50% !important;
+}
+
+/* 사이드바 코드 블록 배경 제거 */
+[data-testid="stSidebar"] code,
+[data-testid="stSidebar"] pre {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    padding: 0 !important;
+    font-family: var(--font-body) !important;
+}
+
+/* 프로그레스 바 */
+[data-testid="stSidebar"] .stProgress>div>div>div {
+    background: var(--gradient-gold-shimmer) !important;
+    background-size: 200% auto;
+    animation: shimmer 2s linear infinite;
+}
+
+[data-testid="stSidebar"] .stProgress>div {
+    background: var(--imf-slate) !important;
+    overflow: hidden !important;
+}
+
+/* ============================================================
+   BUTTONS - 버튼 시스템
+   ============================================================ */
+.stButton>button {
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    background: transparent !important;
+    color: var(--imf-cream) !important;
+    border: 1px solid var(--imf-muted) !important;
+    border-radius: 0 !important;
+    padding: var(--space-md) var(--space-lg) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton>button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-gold-shimmer);
+    background-size: 200% auto;
+    transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.stButton>button:hover {
+    color: var(--imf-void) !important;
+    border-color: var(--imf-gold) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+}
+
+.stButton>button:hover::before {
+    left: 0;
+}
+
+/* Primary 버튼 (type="primary") */
+.stButton>button[kind="primary"],
+.stButton>button[data-testid*="primary"] {
+    background: var(--imf-gold) !important;
+    color: var(--imf-void) !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+.stButton>button[kind="primary"]:hover,
+.stButton>button[data-testid*="primary"]:hover {
+    background: var(--imf-gold-bright) !important;
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+}
+
+/* ============================================================
+   INPUT FIELDS - 입력 필드
+   ============================================================ */
+
+/* 입력 필드 라벨 - 하얀색으로 가독성 향상 */
+.stTextInput label,
+.stTextArea label,
+.stSelectbox label,
+.stMultiSelect label {
+    color: #FFFFFF !important;
+    font-family: var(--font-body) !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+}
+
+/* 입력 필드 도움말 텍스트 */
+.stTextInput [data-testid="stMarkdownContainer"] p,
+.stSelectbox [data-testid="stMarkdownContainer"] p {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.85rem !important;
+}
+
+.stTextInput>div>div>input,
+.stTextArea textarea {
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    background: var(--imf-slate) !important;
+    color: var(--imf-cream) !important;
+    border: 1px solid var(--imf-muted) !important;
+    border-radius: 8px !important;
+    padding: var(--space-md) !important;
+    transition: all 0.3s ease !important;
+}
+
+.stTextInput>div>div>input:focus,
+.stTextArea textarea:focus {
+    border-color: var(--imf-gold) !important;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3) !important;
+    outline: none !important;
+}
+
+.stTextInput>div>div>input::placeholder {
+    color: var(--imf-muted) !important;
+    font-style: normal;
+}
+
+/* SELECT BOX */
+.stSelectbox>div>div {
+    background: var(--imf-white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 8px !important;
+}
+
+.stSelectbox>div>div:hover {
+    border-color: var(--imf-cream) !important;
+}
+
+[data-baseweb="select"]>div {
+    background: var(--imf-white) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 8px !important;
+}
+
+[data-baseweb="select"] span {
+    color: var(--imf-cream) !important;
+}
+
+/* 드롭다운 메뉴 (팝오버) - 흰색 배경, 검정 텍스트 */
+[data-baseweb="popover"] {
+    background: #ffffff !important;
+    border: 1px solid var(--imf-gold) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-baseweb="popover"] ul {
+    background: #ffffff !important;
+}
+
+[data-baseweb="popover"] li {
+    color: #1a1a1a !important;
+    background: #ffffff !important;
+}
+
+[data-baseweb="popover"] li:hover {
+    background: rgba(212, 175, 55, 0.15) !important;
+    color: #1a1a1a !important;
+}
+
+[data-baseweb="popover"] li[aria-selected="true"] {
+    background: rgba(212, 175, 55, 0.25) !important;
+    color: #1a1a1a !important;
+}
+
+/* 드롭다운 메뉴 내 텍스트 */
+[data-baseweb="menu"] {
+    background: #ffffff !important;
+}
+
+[data-baseweb="menu"] li span,
+[data-baseweb="menu"] li div {
+    color: #1a1a1a !important;
+}
+
+/* ============================================================
+   FILE UPLOADER - 파일 업로드 영역
+   ============================================================ */
+.stFileUploader {
+    background: transparent !important;
+}
+
+.stFileUploader>div {
+    background: var(--imf-slate) !important;
+    border: 2px dashed var(--imf-muted) !important;
+    border-radius: 0 !important;
+    padding: var(--space-xl) !important;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader>div:hover {
+    border-color: var(--imf-gold) !important;
+    background: rgba(212, 175, 55, 0.02) !important;
+}
+
+.stFileUploader label {
+    color: var(--imf-cream) !important;
+}
+
+/* ============================================================
+   CARDS & CONTAINERS - 카드 시스템
+   ============================================================ */
+.highlight-box {
+    background: var(--imf-charcoal) !important;
+    background-image: var(--gradient-card-shine);
+    border: none !important;
+    border-left: 3px solid var(--imf-gold) !important;
+    border-radius: 0 !important;
+    padding: var(--space-lg) !important;
+    margin: var(--space-md) 0 !important;
+    position: relative;
+    animation: fadeInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.highlight-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gradient-f-to-future);
+}
+
+.success-box {
+    background: rgba(0, 212, 170, 0.05) !important;
+    border: 1px solid rgba(0, 212, 170, 0.2) !important;
+    border-left: 3px solid var(--imf-mint) !important;
+    border-radius: 0 !important;
+    padding: var(--space-lg) !important;
+    color: var(--imf-cream) !important;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-box h3 {
+    color: var(--imf-mint) !important;
+    font-family: var(--font-display) !important;
+}
+
+/* METRIC CARDS */
+.metric-card {
+    background: var(--imf-charcoal) !important;
+    background-image: var(--gradient-card-shine);
+    border: 1px solid rgba(212, 175, 55, 0.1) !important;
+    border-radius: 0 !important;
+    padding: var(--space-xl) !important;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--imf-gold) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.metric-card:hover::after {
+    opacity: 1;
+}
+
+.metric-card h2 {
+    font-family: var(--font-display) !important;
+    font-size: 1.2rem !important;
+    color: var(--imf-gold) !important;
+}
+
+/* ============================================================
+   THINKING BOX - AI 추론 시각화
+   ============================================================ */
+.thinking-header {
+    font-family: var(--font-display) !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: var(--imf-mint) !important;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md) !important;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.thinking-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--imf-mint), transparent);
+    margin-left: var(--space-md);
+}
+
+.thinking-box {
+    background: var(--imf-slate) !important;
+    border: none !important;
+    border-left: 2px solid var(--imf-mint) !important;
+    border-radius: 0 !important;
+    padding: var(--space-lg) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    line-height: 1.8 !important;
+    color: var(--imf-gray) !important;
+    max-height: 400px;
+    overflow-y: auto;
+    position: relative;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.thinking-box::before {
+    content: '>';
+    position: absolute;
+    top: var(--space-lg);
+    left: var(--space-md);
+    color: var(--imf-mint);
+    animation: typing-cursor 1s ease-in-out infinite;
+}
+
+/* 스크롤바 커스텀 */
+.thinking-box::-webkit-scrollbar {
+    width: 4px;
+}
+
+.thinking-box::-webkit-scrollbar-track {
+    background: var(--imf-charcoal);
+}
+
+.thinking-box::-webkit-scrollbar-thumb {
+    background: var(--imf-gold);
+}
+
+/* ============================================================
+   EXPANDER - 접이식 컴포넌트
+   ============================================================ */
+.streamlit-expanderHeader {
+    font-family: var(--font-mono) !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: var(--imf-cream) !important;
+    background: var(--imf-slate) !important;
+    border: 1px solid var(--imf-muted) !important;
+    border-radius: 0 !important;
+    padding: var(--space-md) !important;
+    transition: all 0.3s ease;
+}
+
+.streamlit-expanderHeader:hover {
+    border-color: var(--imf-gold) !important;
+    background: rgba(212, 175, 55, 0.05) !important;
+}
+
+.streamlit-expanderContent {
+    background: var(--imf-charcoal) !important;
+    border: 1px solid var(--imf-muted) !important;
+    border-top: none !important;
+    border-radius: 0 !important;
+    padding: var(--space-lg) !important;
+}
+
+/* ============================================================
+   ALERTS & MESSAGES
+   ============================================================ */
+.stAlert {
+    border-radius: 0 !important;
+    border: none !important;
+    font-family: var(--font-body) !important;
+}
+
+/* Success */
+.stAlert[data-baseweb="notification"]>div:first-child {
+    background: rgba(0, 212, 170, 0.1) !important;
+    border-left: 3px solid var(--imf-mint) !important;
+}
+
+/* Warning */
+.stAlert [data-testid="stAlertContentWarning"] {
+    background: rgba(212, 175, 55, 0.1) !important;
+    border-left: 3px solid var(--imf-gold) !important;
+}
+
+/* Info */
+.stAlert [data-testid="stAlertContentInfo"] {
+    background: rgba(100, 100, 100, 0.1) !important;
+    border-left: 3px solid var(--imf-gray) !important;
+}
+
+/* ============================================================
+   METRIC DISPLAY
+   ============================================================ */
+[data-testid="stMetric"] {
+    background: var(--imf-charcoal) !important;
+    padding: var(--space-lg) !important;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+[data-testid="stMetricValue"] {
+    font-family: var(--font-display) !important;
+    font-size: 2.5rem !important;
+    font-weight: 800 !important;
+    color: var(--imf-gold) !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--imf-gray) !important;
+}
+
+/* ============================================================
+   COLUMNS & LAYOUT
+   ============================================================ */
+[data-testid="column"] {
+    padding: var(--space-sm) !important;
+}
+
+/* 구분선 */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, var(--imf-muted), transparent) !important;
+    margin: var(--space-xl) 0 !important;
+}
+
+/* ============================================================
+   STEP INDICATOR - 단계별 진행 UI
+   ============================================================ */
+.step-container {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-title {
+    font-family: var(--font-display) !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--imf-white) !important;
+    margin-bottom: var(--space-lg) !important;
+    position: relative;
+    padding-left: var(--space-xl);
+}
+
+.step-title::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--imf-gold);
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--imf-gold);
+}
+
+/* ============================================================
+   SCHOOL SEARCH RESULTS - 학교 검색 결과
+   ============================================================ */
+.school-result-item {
+    background: var(--imf-slate);
+    border: 1px solid transparent;
+    padding: var(--space-md) var(--space-lg);
+    margin: var(--space-sm) 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.school-result-item:hover {
+    border-color: var(--imf-gold);
+    background: rgba(212, 175, 55, 0.05);
+    transform: translateX(4px);
+}
+
+.school-result-item .school-name {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--imf-cream);
+}
+
+.school-result-item .school-region {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--imf-muted);
+}
+
+/* ============================================================
+   COURSE RECOMMENDATION - 과목 추천 결과
+   ============================================================ */
+.course-year-section {
+    background: var(--imf-charcoal);
+    border-left: 3px solid var(--imf-gold);
+    padding: var(--space-lg);
+    margin: var(--space-md) 0;
+}
+
+.course-year-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--imf-gold);
+    margin-bottom: var(--space-md);
+}
+
+.course-chip {
+    display: inline-block;
+    background: var(--imf-slate);
+    color: var(--imf-cream);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: var(--space-xs) var(--space-sm);
+    margin: var(--space-xs);
+    border: 1px solid var(--imf-muted);
+    transition: all 0.2s ease;
+}
+
+.course-chip:hover {
+    border-color: var(--imf-mint);
+    color: var(--imf-mint);
+}
+
+/* ============================================================
+   VERIFICATION RESULT - 검증 결과
+   ============================================================ */
+.verification-score {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 800;
+    background: var(--gradient-f-to-future);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.verification-bar {
+    height: 8px;
+    background: var(--imf-slate);
+    overflow: hidden;
+    position: relative;
+}
+
+.verification-bar-fill {
+    height: 100%;
+    background: var(--gradient-f-to-future);
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer-section {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--imf-muted);
+    text-align: center;
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--imf-graphite);
+    margin-top: var(--space-2xl);
+}
+
+.footer-section a {
+    color: var(--imf-gold) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: var(--imf-gold-bright) !important;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 768px) {
+    .main-header {
+        font-size: 3rem !important;
+        text-align: center !important;
+    }
+
+    .sub-header {
+        text-align: center !important;
+        font-size: 0.75rem !important;
+    }
+
+    .metric-card {
+        padding: var(--space-lg) !important;
+    }
+
+    [data-testid="stMetricValue"] {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* ============================================================
+   DARK MODE STREAMLIT OVERRIDES
+   ============================================================ */
+[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+.block-container {
+    padding-top: 2rem !important;
+    max-width: 1200px !important;
+}
+
+/* 스트림릿 기본 링크 색상 */
+a {
+    color: var(--imf-gold) !important;
+}
+
+a:hover {
+    color: var(--imf-mint) !important;
+}
+
+/* 마크다운 텍스트 */
+.stMarkdown {
+    color: var(--imf-cream) !important;
+}
+
+.stMarkdown p {
+    line-height: 1.7;
+}
+
+.stMarkdown strong {
+    color: var(--imf-white);
+    font-weight: 600;
+}
+
+.stMarkdown code {
+    font-family: var(--font-mono) !important;
+    background: var(--imf-slate) !important;
+    color: var(--imf-mint) !important;
+    padding: 2px 6px;
+    border-radius: 0;
+}
+
+/* 캡션 */
+.stCaption {
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    color: var(--imf-muted) !important;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   DYNAMIC EFFECTS - 동적 효과
+   ============================================================ */
+
+/* 플로팅 파티클 배경 */
+@keyframes float-particle {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.3;
+    }
+
+    25% {
+        transform: translateY(-30px) translateX(15px) scale(1.1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-50px) translateX(-10px) scale(0.9);
+        opacity: 0.4;
+    }
+
+    75% {
+        transform: translateY(-25px) translateX(20px) scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        filter: blur(60px);
+    }
+
+    50% {
+        opacity: 0.6;
+        filter: blur(80px);
+    }
+}
+
+@keyframes aurora-flow {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes wave-motion {
+
+    0%,
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+
+    50% {
+        transform: translateY(-5px) scaleY(1.02);
+    }
+}
+
+@keyframes subtle-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 앰비언트 글로우 오브 */
+.stApp::before {
+    content: '' !important;
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    animation: glow-pulse 6s ease-in-out infinite, float-particle 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stApp::after {
+    content: '' !important;
+    position: fixed;
+    bottom: 20%;
+    left: 5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 212, 170, 0.1) 0%, transparent 70%);
+    animation: glow-pulse 8s ease-in-out infinite 2s, float-particle 20s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 메인 콘텐츠가 글로우 위에 표시되도록 */
+.main .block-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 호버시 카드 리플 효과 */
+.highlight-box,
+.success-box,
+.metric-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-box::after,
+.success-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    pointer-events: none;
+}
+
+.highlight-box:hover::after,
+.success-box:hover::after {
+    width: 300%;
+    height: 300%;
+}
+
+/* 입력 필드 글로우 효과 */
+.stTextInput>div>div>input,
+.stTextArea textarea,
+.stSelectbox>div>div {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.stTextInput>div>div>input:focus,
+.stTextArea textarea:focus {
+    box-shadow:
+        0 0 0 2px rgba(212, 175, 55, 0.3),
+        0 0 30px rgba(212, 175, 55, 0.15) !important;
+}
+
+/* 버튼 파티클 효과 */
+.stButton>button {
+    position: relative;
+}
+
+.stButton>button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: var(--imf-gold);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.stButton>button:active::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(20);
+    transition: all 0s;
+}
+
+/* 사이드바 호버 글로우 */
+[data-testid="stSidebar"] .stMarkdown p,
+[data-testid="stSidebar"] div[style*="display: flex"] {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+[data-testid="stSidebar"] div[style*="display: flex"]:hover {
+    background: rgba(212, 175, 55, 0.08);
+    transform: translateX(4px);
+}
+
+/* 프로그레스 바 글로우 */
+.stProgress>div>div>div {
+    position: relative;
+    overflow: visible !important;
+}
+
+.stProgress>div>div>div::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--imf-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--imf-gold), 0 0 40px var(--imf-gold-bright);
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+/* 파일 업로더 드래그 효과 */
+.stFileUploader>div {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stFileUploader>div::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, var(--imf-gold), var(--imf-mint), var(--imf-gold)) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.stFileUploader>div:hover::before {
+    opacity: 1;
+}
+
+/* 확장 패널 애니메이션 */
+.streamlit-expanderHeader {
+    position: relative;
+    overflow: hidden;
+}
+
+.streamlit-expanderHeader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.streamlit-expanderHeader:hover::before {
+    left: 100%;
+}
+
+/* 텍스트 셀렉션 스타일 */
+::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: var(--imf-white);
+}
+
+/* 스크롤바 동적 효과 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--imf-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--imf-gold), var(--imf-mint));
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--imf-gold-bright), var(--imf-mint-glow));
+    box-shadow: 0 0 10px var(--imf-gold);
+}
+
+/* 메트릭 카드 숫자 카운트 효과 (시각적 강조) */
+[data-testid="stMetricValue"] {
+    position: relative;
+    display: inline-block;
+}
+
+[data-testid="stMetricValue"]::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-gold-shimmer);
+    background-size: 200% auto;
+    animation: shimmer 2s linear infinite;
+}
+
+/* 헤더 타이틀 글로우 */
+.main-header {
+    text-shadow:
+        0 0 40px rgba(212, 175, 55, 0.3),
+        0 0 80px rgba(0, 212, 170, 0.2);
+}
+
+/* 성공 박스 체크마크 애니메이션 */
+.success-box h2::before {
+    content: '✓ ';
+    color: var(--imf-mint);
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+/* 로딩 스피너 커스텀 */
+.stSpinner>div {
+    border-color: var(--imf-gold) transparent var(--imf-mint) transparent !important;
+    animation: subtle-rotate 1s linear infinite;
+}
+
+/* 탭 전환 효과 */
+.stTabs [data-baseweb="tab-list"] {
+    position: relative;
+}
+
+.stTabs [data-baseweb="tab"] {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    transform: translateY(-2px);
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+/* 링크 밑줄 애니메이션 */
+a {
+    position: relative;
+    text-decoration: none !important;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--imf-mint);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* 페이지 로드 시 순차적 페이드인 */
+.main .block-container>div {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.main .block-container>div:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.main .block-container>div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.main .block-container>div:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.main .block-container>div:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.main .block-container>div:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.main .block-container>div:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.main .block-container>div:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.main .block-container>div:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+/* 호버 시 요소 브리딩 효과 */
+.highlight-box:hover,
+.metric-card:hover {
+    animation: wave-motion 2s ease-in-out infinite;
+}
+
+/* 컬럼 호버 효과 */
+[data-testid="column"]:hover {
+    z-index: 10;
+}
+
+[data-testid="column"]>div {
+    transition: transform 0.3s ease;
+}
+
+[data-testid="column"]:hover>div {
+    transform: scale(1.01);
+}

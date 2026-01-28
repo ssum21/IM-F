@@ -1,0 +1,96 @@
+{
+  "universities": [
+    {
+      "id": "snu",
+      "name": "서울대학교",
+      "tier": "SKY",
+      "region": "서울",
+      "has_requirements": true,
+      "years": ["2026", "2028"],
+      "majors_count": 100,
+      "features": ["학생부종합전형", "정시모집", "전공연계과목"]
+    },
+    {
+      "id": "yonsei",
+      "name": "연세대학교",
+      "tier": "SKY",
+      "region": "서울",
+      "has_requirements": true,
+      "years": ["2022"],
+      "majors_count": 80,
+      "features": ["학생부종합전형", "공동연구참여"]
+    },
+    {
+      "id": "korea",
+      "name": "고려대학교",
+      "tier": "SKY",
+      "region": "서울",
+      "has_requirements": true,
+      "years": ["2022", "2028"],
+      "majors_count": 85,
+      "features": ["학생부종합전형", "공동연구참여", "자연계열권장과목"]
+    },
+    {
+      "id": "skku",
+      "name": "성균관대학교",
+      "tier": "상위권",
+      "region": "서울/경기",
+      "has_requirements": true,
+      "years": ["2022"],
+      "majors_count": 70,
+      "features": ["학생부종합전형", "공동연구참여"]
+    },
+    {
+      "id": "kyunghee",
+      "name": "경희대학교",
+      "tier": "상위권",
+      "region": "서울/경기",
+      "has_requirements": true,
+      "years": ["2022", "2028"],
+      "majors_count": 75,
+      "features": ["학생부종합전형", "공동연구참여", "자연계열권장과목"]
+    },
+    {
+      "id": "cau",
+      "name": "중앙대학교",
+      "tier": "상위권",
+      "region": "서울",
+      "has_requirements": true,
+      "years": ["2022"],
+      "majors_count": 65,
+      "features": ["학생부종합전형", "공동연구참여"]
+    },
+    {
+      "id": "konkuk",
+      "name": "건국대학교",
+      "tier": "상위권",
+      "region": "서울",
+      "has_requirements": true,
+      "years": ["2028"],
+      "majors_count": 60,
+      "features": ["학생부종합전형", "이수추천과목"]
+    },
+    {
+      "id": "dongguk",
+      "name": "동국대학교",
+      "tier": "중위권",
+      "region": "서울",
+      "has_requirements": true,
+      "years": ["2028"],
+      "majors_count": 50,
+      "features": ["학생부종합전형", "전공관련교과영역"]
+    }
+  ],
+  "tiers": {
+    "SKY": ["서울대학교", "연세대학교", "고려대학교"],
+    "상위권": ["성균관대학교", "경희대학교", "중앙대학교", "건국대학교", "한양대학교", "서강대학교", "이화여대"],
+    "중위권": ["동국대학교", "홍익대학교", "숙명여대", "국민대학교", "세종대학교"]
+  },
+  "major_categories": {
+    "인문계열": ["어문학", "인문학", "사회과학", "경영경제", "교육학", "법학", "예술체육"],
+    "자연계열": ["수학", "물리", "화학", "생명과학", "지구과학", "천문학", "환경학"],
+    "공학계열": ["기계", "전기전자", "컴퓨터", "화공", "건축", "토목", "재료", "산업", "항공", "조선"],
+    "의약학계열": ["의학", "약학", "한의학", "치의학", "간호학", "수의학", "보건학"],
+    "예체능계열": ["음악", "미술", "디자인", "체육", "무용", "연극영화"]
+  }
+}

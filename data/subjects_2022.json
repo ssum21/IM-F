@@ -1,0 +1,693 @@
+{
+    "description": "2022 개정 교육과정 기반 고등학교 과목 목록",
+    "version": "2022",
+    "categories": {
+        "공통과목": {
+            "description": "1학년 필수 이수 과목 (48학점)",
+            "subjects": [
+                {
+                    "name": "공통국어1",
+                    "credits": 4,
+                    "area": "국어"
+                },
+                {
+                    "name": "공통국어2",
+                    "credits": 4,
+                    "area": "국어"
+                },
+                {
+                    "name": "공통수학1",
+                    "credits": 4,
+                    "area": "수학"
+                },
+                {
+                    "name": "공통수학2",
+                    "credits": 4,
+                    "area": "수학"
+                },
+                {
+                    "name": "공통영어1",
+                    "credits": 4,
+                    "area": "영어"
+                },
+                {
+                    "name": "공통영어2",
+                    "credits": 4,
+                    "area": "영어"
+                },
+                {
+                    "name": "한국사1",
+                    "credits": 3,
+                    "area": "사회"
+                },
+                {
+                    "name": "한국사2",
+                    "credits": 3,
+                    "area": "사회"
+                },
+                {
+                    "name": "통합사회1",
+                    "credits": 3,
+                    "area": "사회"
+                },
+                {
+                    "name": "통합사회2",
+                    "credits": 3,
+                    "area": "사회"
+                },
+                {
+                    "name": "통합과학1",
+                    "credits": 3,
+                    "area": "과학"
+                },
+                {
+                    "name": "통합과학2",
+                    "credits": 3,
+                    "area": "과학"
+                },
+                {
+                    "name": "과학탐구실험1",
+                    "credits": 1,
+                    "area": "과학"
+                },
+                {
+                    "name": "과학탐구실험2",
+                    "credits": 1,
+                    "area": "과학"
+                },
+                {
+                    "name": "체육1",
+                    "credits": 2,
+                    "area": "체육"
+                },
+                {
+                    "name": "음악/미술",
+                    "credits": 2,
+                    "area": "예술"
+                }
+            ]
+        },
+        "일반선택": {
+            "description": "2-3학년 선택 가능한 일반 과목",
+            "subjects": [
+                {
+                    "name": "화법과 작문",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "인문",
+                        "사회",
+                        "교육"
+                    ]
+                },
+                {
+                    "name": "독서와 작문",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "인문",
+                        "사회",
+                        "교육"
+                    ]
+                },
+                {
+                    "name": "문학",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "인문",
+                        "예술",
+                        "교육"
+                    ]
+                },
+                {
+                    "name": "대수",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "자연",
+                        "공학",
+                        "의학"
+                    ]
+                },
+                {
+                    "name": "미적분I",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "자연",
+                        "공학",
+                        "의학"
+                    ]
+                },
+                {
+                    "name": "확률과 통계",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "자연",
+                        "공학",
+                        "사회"
+                    ]
+                },
+                {
+                    "name": "영어I",
+                    "credits": 4,
+                    "area": "영어",
+                    "career_tags": [
+                        "인문",
+                        "사회",
+                        "국제"
+                    ]
+                },
+                {
+                    "name": "영어II",
+                    "credits": 4,
+                    "area": "영어",
+                    "career_tags": [
+                        "인문",
+                        "사회",
+                        "국제"
+                    ]
+                },
+                {
+                    "name": "영어독해와 작문",
+                    "credits": 4,
+                    "area": "영어",
+                    "career_tags": [
+                        "인문",
+                        "사회",
+                        "국제"
+                    ]
+                },
+                {
+                    "name": "세계시민과 지리",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "사회",
+                        "국제",
+                        "환경"
+                    ]
+                },
+                {
+                    "name": "한국지리 탐구",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "사회",
+                        "환경"
+                    ]
+                },
+                {
+                    "name": "세계사",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "인문",
+                        "사회",
+                        "국제"
+                    ]
+                },
+                {
+                    "name": "동아시아 역사 기행",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "인문",
+                        "사회"
+                    ]
+                },
+                {
+                    "name": "정치",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "사회",
+                        "법학",
+                        "행정"
+                    ]
+                },
+                {
+                    "name": "법과 사회",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "법학",
+                        "행정",
+                        "사회"
+                    ]
+                },
+                {
+                    "name": "경제",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "경제",
+                        "경영",
+                        "사회"
+                    ]
+                },
+                {
+                    "name": "사회문화 탐구",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "사회",
+                        "심리",
+                        "교육"
+                    ]
+                },
+                {
+                    "name": "역학과 에너지",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "공학"
+                    ]
+                },
+                {
+                    "name": "물질과 에너지",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "공학",
+                        "의학"
+                    ]
+                },
+                {
+                    "name": "화학 반응의 세계",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "의학",
+                        "약학"
+                    ]
+                },
+                {
+                    "name": "생물의 유전",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "의학",
+                        "생명"
+                    ]
+                },
+                {
+                    "name": "지구시스템과학",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "환경"
+                    ]
+                },
+                {
+                    "name": "정보",
+                    "credits": 4,
+                    "area": "정보",
+                    "career_tags": [
+                        "공학",
+                        "IT",
+                        "데이터"
+                    ]
+                }
+            ]
+        },
+        "진로선택": {
+            "description": "진로 심화 과목 (성취평가제 적용)",
+            "subjects": [
+                {
+                    "name": "주제 탐구 독서",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "인문",
+                        "사회"
+                    ]
+                },
+                {
+                    "name": "문학과 영상",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "예술",
+                        "미디어"
+                    ]
+                },
+                {
+                    "name": "미적분II",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "자연",
+                        "공학",
+                        "의학"
+                    ]
+                },
+                {
+                    "name": "기하",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "자연",
+                        "공학",
+                        "건축"
+                    ]
+                },
+                {
+                    "name": "수학과제 탐구",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "자연",
+                        "공학"
+                    ]
+                },
+                {
+                    "name": "인공지능 수학",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "공학",
+                        "IT",
+                        "데이터"
+                    ]
+                },
+                {
+                    "name": "직무 영어",
+                    "credits": 4,
+                    "area": "영어",
+                    "career_tags": [
+                        "경영",
+                        "국제",
+                        "무역"
+                    ]
+                },
+                {
+                    "name": "영미 문학 읽기",
+                    "credits": 4,
+                    "area": "영어",
+                    "career_tags": [
+                        "인문",
+                        "교육"
+                    ]
+                },
+                {
+                    "name": "도시의 미래 탐구",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "도시",
+                        "건축",
+                        "환경"
+                    ]
+                },
+                {
+                    "name": "역사로 탐구하는 현대 세계",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "인문",
+                        "사회"
+                    ]
+                },
+                {
+                    "name": "윤리 문제 탐구",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "인문",
+                        "철학",
+                        "법학"
+                    ]
+                },
+                {
+                    "name": "금융과 경제생활",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "경제",
+                        "금융",
+                        "경영"
+                    ]
+                },
+                {
+                    "name": "물리학 실험",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "공학"
+                    ]
+                },
+                {
+                    "name": "화학 실험",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "의학",
+                        "약학"
+                    ]
+                },
+                {
+                    "name": "생명과학 실험",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "의학",
+                        "생명"
+                    ]
+                },
+                {
+                    "name": "지구과학 실험",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "환경"
+                    ]
+                },
+                {
+                    "name": "물리학II",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "공학"
+                    ]
+                },
+                {
+                    "name": "화학II",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "의학",
+                        "약학"
+                    ]
+                },
+                {
+                    "name": "생명과학II",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "의학",
+                        "생명"
+                    ]
+                },
+                {
+                    "name": "지구과학II",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "환경"
+                    ]
+                },
+                {
+                    "name": "프로그래밍",
+                    "credits": 4,
+                    "area": "정보",
+                    "career_tags": [
+                        "공학",
+                        "IT"
+                    ]
+                },
+                {
+                    "name": "데이터 과학",
+                    "credits": 4,
+                    "area": "정보",
+                    "career_tags": [
+                        "IT",
+                        "데이터",
+                        "경영"
+                    ]
+                },
+                {
+                    "name": "인공지능 기초",
+                    "credits": 4,
+                    "area": "정보",
+                    "career_tags": [
+                        "공학",
+                        "IT",
+                        "데이터"
+                    ]
+                },
+                {
+                    "name": "정보과학",
+                    "credits": 4,
+                    "area": "정보",
+                    "career_tags": [
+                        "공학",
+                        "IT"
+                    ]
+                }
+            ]
+        },
+        "융합선택": {
+            "description": "교과 융합 및 실생활 연계 과목",
+            "subjects": [
+                {
+                    "name": "언어생활 탐구",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "인문",
+                        "미디어"
+                    ]
+                },
+                {
+                    "name": "매체 의사소통",
+                    "credits": 4,
+                    "area": "국어",
+                    "career_tags": [
+                        "미디어",
+                        "광고"
+                    ]
+                },
+                {
+                    "name": "수학과 문화",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "교양"
+                    ]
+                },
+                {
+                    "name": "실용 수학",
+                    "credits": 4,
+                    "area": "수학",
+                    "career_tags": [
+                        "경영",
+                        "경제"
+                    ]
+                },
+                {
+                    "name": "미디어 영어",
+                    "credits": 4,
+                    "area": "영어",
+                    "career_tags": [
+                        "미디어",
+                        "국제"
+                    ]
+                },
+                {
+                    "name": "세계 문제와 지속가능한 삶",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "환경",
+                        "국제"
+                    ]
+                },
+                {
+                    "name": "기후변화와 지속가능한 세계",
+                    "credits": 4,
+                    "area": "사회",
+                    "career_tags": [
+                        "환경",
+                        "과학"
+                    ]
+                },
+                {
+                    "name": "과학의 역사와 문화",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "인문",
+                        "과학"
+                    ]
+                },
+                {
+                    "name": "융합과학 탐구",
+                    "credits": 4,
+                    "area": "과학",
+                    "career_tags": [
+                        "자연",
+                        "융합"
+                    ]
+                },
+                {
+                    "name": "스포츠 생활1",
+                    "credits": 2,
+                    "area": "체육",
+                    "career_tags": [
+                        "체육",
+                        "건강"
+                    ]
+                },
+                {
+                    "name": "스포츠 생활2",
+                    "credits": 2,
+                    "area": "체육",
+                    "career_tags": [
+                        "체육",
+                        "건강"
+                    ]
+                },
+                {
+                    "name": "음악 감상과 비평",
+                    "credits": 2,
+                    "area": "예술",
+                    "career_tags": [
+                        "예술",
+                        "문화"
+                    ]
+                },
+                {
+                    "name": "미술 감상과 비평",
+                    "credits": 2,
+                    "area": "예술",
+                    "career_tags": [
+                        "예술",
+                        "문화"
+                    ]
+                },
+                {
+                    "name": "소프트웨어와 생활",
+                    "credits": 4,
+                    "area": "정보",
+                    "career_tags": [
+                        "IT",
+                        "생활"
+                    ]
+                }
+            ]
+        }
+    },
+    "credit_requirements": {
+        "total": 192,
+        "common": 48,
+        "elective": 144,
+        "min_per_semester": 25,
+        "max_per_semester": 34
+    }
+}

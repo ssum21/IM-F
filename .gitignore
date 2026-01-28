@@ -1,0 +1,15 @@
+# User specified ignores
+a_real_life_record_book.pdf
+.claude/
+.venv/
+.env
+.env.example
+
+# Python defaults
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS defaults
+.DS_Store
+.env

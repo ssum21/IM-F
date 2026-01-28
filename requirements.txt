@@ -1,0 +1,26 @@
+# 🎓 내 학점, 내 길 (Oh_My_School_Credit) - 의존성 패키지
+# Upstage Solar API 기반 고교학점제 맞춤 과목 설계 AI Agent
+
+# 웹 프레임워크
+streamlit>=1.30.0
+
+# Upstage API 클라이언트 (OpenAI 호환)
+openai>=1.81.0
+
+# HTTP 요청 (Document Parse, Groundedness Check)
+requests>=2.31.0
+
+# 환경 변수 관리
+python-dotenv>=1.0.0
+
+# 데이터 검증
+pydantic>=2.0.0
+
+# JSON 처리 (기본 내장, 명시적 표기)
+# json (built-in)
+
+# 파일 처리
+aiofiles>=23.0.0
+
+# PDF 미리보기 (선택사항)
+PyPDF2>=3.0.0

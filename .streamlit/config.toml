@@ -1,0 +1,34 @@
+[server]
+enableStaticServing = true
+
+[[theme.fontFaces]]
+family = "Noto Sans KR"
+url = "https://fonts.gstatic.com/s/notosanskr/v36/PbykFmXiEBPT4ITbgNA5Cgm20xz64px_1hVWr0wuPNGmlQNMEfD4.woff2"
+style = "normal"
+weight = 400
+
+[[theme.fontFaces]]
+family = "Noto Sans KR"
+url = "https://fonts.gstatic.com/s/notosanskr/v36/PbykFmXiEBPT4ITbgNA5Cgm20xz64px_1hVWr0wuPNGmlQNMEfD4.woff2"
+style = "normal"
+weight = 700
+
+[theme]
+# 🎓 I'MF DARK THEME - F학점에서 Future로 🎓
+primaryColor = "#d4af37"              # IMF Gold - 메인 악센트
+backgroundColor = "#0a0a0c"           # IMF Void - 다크 배경
+secondaryBackgroundColor = "#1c1c20"  # IMF Slate - 카드/컨테이너 배경
+textColor = "#f0ebe3"                 # IMF Cream - 기본 텍스트
+linkColor = "#d4af37"                 # Gold 링크
+borderColor = "#28282e"               # IMF Graphite - 경계선
+showWidgetBorder = true
+baseRadius = "0.5rem"                 # 부드러운 모서리
+font = "Noto Sans KR"                 # 한국어 최적화 폰트
+headingFont = "Noto Sans KR"          # 제목 폰트
+codeFont = "monospace"                # 코드 폰트
+codeBackgroundColor = "#1c1c20"       # 코드 배경
+showSidebarBorder = true
+
+[theme.sidebar]
+backgroundColor = "#141416"           # IMF Charcoal - 사이드바 배경
+secondaryBackgroundColor = "#1c1c20"  # IMF Slate - 사이드바 섹션
