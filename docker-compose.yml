@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  oh-my-school-credit:
+    image: ssumuss/oh-my-school-credit:latest
+    container_name: oh-my-school-credit
+    restart: unless-stopped
+
+    ports:
+      - "8501:8501"
+
+    environment:
+      # 환경 변수를 여기에 직접 입력하거나, .env 파일 사용
+      - UPSTAGE_API_KEY=${UPSTAGE_API_KEY}
+      - NEIS_API_KEY=${NEIS_API_KEY}
+
+    volumes:
+      # 데이터 영속성을 위한 볼륨 (선택사항)
+      - ./data:/app/data
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    networks:
+      - school-credit-network
+
+networks:
+  school-credit-network:
+    driver: bridge

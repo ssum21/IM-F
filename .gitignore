@@ -13,3 +13,6 @@ __pycache__/
 # macOS defaults
 .DS_Store
 .env
+
+# Streamlit secrets
+.streamlit/secrets.toml
